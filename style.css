@@ -1,0 +1,586 @@
+/* ==========================================================
+   FLORES AMARILLAS ANIMADAS - PURO ARTE VISUAL
+   ========================================================== */
+
+:root {
+  --bg-top: #131b2e;
+  --bg-mid: #0b111e;
+  --bg-bottom: #05070c;
+  
+  --petal-gold-deep: #ff7b00;
+  --petal-gold: #ffa600;
+  --petal-yellow: #ffd500;
+  --petal-light: #fff275;
+  --petal-glow: rgba(255, 205, 30, 0.45);
+
+  --center-dark: #271202;
+  --center-mid: #4a2608;
+  --center-rim: #8f5313;
+  --pollen-glow: #ffba08;
+
+  --stem-dark: #143510;
+  --stem-mid: #255d1f;
+  --stem-light: #438f3a;
+  --leaf-highlight: #68bf5d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 25%, var(--bg-top) 0%, var(--bg-mid) 55%, var(--bg-bottom) 100%);
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: sans-serif;
+}
+
+/* Canvas para destellos, polen y luciérnagas de fondo */
+#ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Contenedor del jardín */
+.garden-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+/* Resplandor cálido en el suelo */
+.ground-glow {
+  position: absolute;
+  bottom: -60px;
+  width: 120vw;
+  max-width: 1000px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 80%, rgba(255, 185, 0, 0.22) 0%, rgba(255, 150, 0, 0.08) 50%, transparent 80%);
+  filter: blur(25px);
+  animation: pulseGround 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulseGround {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Hierbas y tallos de fondo */
+.grass-cluster {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to top, var(--stem-dark), var(--stem-light));
+  border-radius: 4px 4px 0 0;
+  transform-origin: bottom center;
+}
+
+.grass-1 { height: 110px; left: calc(50% - 90px); transform: rotate(-25deg); animation: swayGrass 4s ease-in-out infinite alternate; }
+.grass-2 { height: 140px; left: calc(50% - 40px); transform: rotate(-10deg); animation: swayGrass 5s ease-in-out 0.5s infinite alternate; }
+.grass-3 { height: 160px; left: calc(50% + 5px); transform: rotate(8deg); animation: swayGrass 4.2s ease-in-out 0.2s infinite alternate; }
+.grass-4 { height: 130px; left: calc(50% + 50px); transform: rotate(18deg); animation: swayGrass 4.7s ease-in-out 0.7s infinite alternate; }
+.grass-5 { height: 95px;  left: calc(50% + 85px); transform: rotate(28deg); animation: swayGrass 3.8s ease-in-out 1s infinite alternate; }
+
+@keyframes swayGrass {
+  0% { transform: rotate(var(--rot, -10deg)); }
+  100% { transform: rotate(calc(var(--rot, -10deg) + 6deg)); }
+}
+
+/* Contenedor del Ramo */
+.bouquet {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  height: 92vh;
+  max-height: 820px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Envoltura general de cada flor */
+.flower-wrapper {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+/* ==========================================================
+   TALLOS Y HOJAS CON SVG Y ANIMACIONES
+   ========================================================== */
+.stem-svg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(15, 45, 10, 0.5));
+}
+
+.stem-path, .stem-path-sub {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: growStem 2.6s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes growStem {
+  0% { stroke-dashoffset: 1200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Hojas verdes */
+.leaf {
+  position: absolute;
+  background: linear-gradient(135deg, var(--leaf-highlight) 0%, var(--stem-mid) 60%, var(--stem-dark) 100%);
+  border-radius: 0% 100% 10% 100% / 0% 100% 10% 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4), inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  transform-origin: bottom left;
+  transform: scale(0) rotate(0deg);
+  animation: growLeaf 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes growLeaf {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  100% { transform: scale(1) rotate(var(--target-rot, 35deg)); opacity: 1; }
+}
+
+/* ==========================================================
+   CABEZA DE LA FLOR Y PÉTALOS
+   ========================================================== */
+.flower-head {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  transform-origin: center center;
+  transform: scale(0) rotate(-40deg);
+  opacity: 0;
+  animation: bloomFlower 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bloomFlower {
+  0% {
+    transform: scale(0) rotate(-40deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Resplandor áurico detrás de la flor central */
+.flower-aura {
+  position: absolute;
+  inset: -35px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 0, 0.3) 0%, rgba(255, 170, 0, 0.1) 50%, transparent 75%);
+  filter: blur(16px);
+  z-index: 1;
+  animation: auraPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Capas de pétalos */
+.petals-outer, .petals-middle, .petals-inner, .petals-small {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.petals-outer { z-index: 2; }
+.petals-middle { z-index: 3; }
+.petals-inner { z-index: 4; }
+.petals-small { z-index: 3; }
+
+/* Forma individual del pétalo */
+.petals-outer span,
+.petals-middle span,
+.petals-inner span,
+.petals-small span {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
+  filter: drop-shadow(0 0 5px var(--petal-glow));
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Pétalos capa exterior (más grandes y ligeramente más anaranjados en la base) */
+.petals-outer span {
+  width: 24px;
+  height: 82px;
+  margin-left: -12px;
+  background: linear-gradient(to top, var(--petal-gold-deep) 0%, var(--petal-gold) 35%, var(--petal-yellow) 80%, var(--petal-light) 100%);
+  transform: rotate(calc(var(--i) * (360deg / 16))) translateY(-10px);
+}
+
+/* Flor central con 20 pétalos exteriores */
+.head-center .petals-outer span {
+  width: 27px;
+  height: 95px;
+  margin-left: -13.5px;
+  transform: rotate(calc(var(--i) * (360deg / 20))) translateY(-12px);
+}
+
+/* Pétalos capa media (flor central) */
+.petals-middle span {
+  width: 23px;
+  height: 82px;
+  margin-left: -11.5px;
+  background: linear-gradient(to top, var(--petal-gold) 0%, var(--petal-yellow) 45%, var(--petal-light) 100%);
+  transform: rotate(calc(var(--i) * (360deg / 16) + 11.25deg)) translateY(-10px);
+}
+
+/* Pétalos capa interior (más pequeños, amarillos puros) */
+.petals-inner span {
+  width: 19px;
+  height: 64px;
+  margin-left: -9.5px;
+  background: linear-gradient(to top, var(--petal-gold) 0%, var(--petal-yellow) 40%, #fffbe6 100%);
+  transform: rotate(calc(var(--i) * (360deg / 12) + 15deg)) translateY(-8px);
+}
+
+/* Flores capullo / pequeñas */
+.petals-small span {
+  width: 16px;
+  height: 52px;
+  margin-left: -8px;
+  background: linear-gradient(to top, var(--petal-gold-deep) 0%, var(--petal-yellow) 60%, var(--petal-light) 100%);
+  transform: rotate(calc(var(--i) * (360deg / 8))) translateY(-6px);
+}
+
+/* ==========================================================
+   CENTRO DE LA FLOR (DISCO DE POLEN / SEMILLAS)
+   ========================================================== */
+.flower-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62px;
+  height: 62px;
+  margin-top: -31px;
+  margin-left: -31px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 45% 45%, var(--center-mid) 0%, var(--center-dark) 70%, #150901 100%);
+  box-shadow: 
+    0 0 12px rgba(0, 0, 0, 0.9),
+    0 0 20px var(--pollen-glow),
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    inset 0 0 5px var(--center-rim);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.center-large {
+  width: 82px;
+  height: 82px;
+  margin-top: -41px;
+  margin-left: -41px;
+}
+
+.center-mini {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+/* Textura punteada de polen */
+.center-texture {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-image: radial-gradient(rgba(255, 195, 0, 0.6) 1.5px, transparent 1.5px);
+  background-size: 6px 6px;
+  opacity: 0.85;
+}
+
+.center-fluff {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffb703 0%, #b86208 65%, transparent 100%);
+  opacity: 0.65;
+  filter: blur(2px);
+}
+
+.center-core {
+  position: absolute;
+  inset: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #291001 0%, #462006 100%);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================
+   CONFIGURACIÓN ESPECÍFICA DE CADA FLOR Y POSICIONAMIENTO
+   ========================================================== */
+
+/* 1. FLOR PRINCIPAL (CENTRO) */
+.flower-center-main {
+  width: 200px;
+  height: 700px;
+  z-index: 5;
+  animation: swayCenter 6s ease-in-out infinite alternate;
+}
+
+.flower-center-main .stem-svg {
+  width: 200px;
+  height: 700px;
+}
+
+.flower-center-main .head-center {
+  top: 35px;
+  left: calc(50% - 85px);
+  animation-delay: 0.8s;
+}
+
+.leaf-center-1 {
+  width: 75px;
+  height: 38px;
+  bottom: 270px;
+  left: 55px;
+  --target-rot: -32deg;
+  border-radius: 100% 0% 100% 10% / 100% 0% 100% 10%;
+  animation-delay: 1.2s;
+}
+
+.leaf-center-2 {
+  width: 82px;
+  height: 42px;
+  bottom: 380px;
+  left: 95px;
+  --target-rot: 38deg;
+  animation-delay: 1.6s;
+}
+
+.leaf-center-3 {
+  width: 65px;
+  height: 34px;
+  bottom: 490px;
+  left: 65px;
+  --target-rot: -26deg;
+  border-radius: 100% 0% 100% 10% / 100% 0% 100% 10%;
+  animation-delay: 1.9s;
+}
+
+/* 2. FLOR IZQUIERDA */
+.flower-left {
+  width: 200px;
+  height: 600px;
+  left: calc(50% - 210px);
+  z-index: 4;
+  animation: swayLeft 5.4s ease-in-out 0.4s infinite alternate;
+}
+
+.flower-left .stem-svg {
+  width: 200px;
+  height: 600px;
+}
+
+.flower-left .head-left {
+  top: 75px;
+  left: -25px;
+  transform-origin: center center;
+  animation-delay: 1.3s;
+}
+
+.leaf-left-1 {
+  width: 68px;
+  height: 34px;
+  bottom: 240px;
+  left: 70px;
+  --target-rot: -42deg;
+  border-radius: 100% 0% 100% 10% / 100% 0% 100% 10%;
+  animation-delay: 1.6s;
+}
+
+.leaf-left-2 {
+  width: 62px;
+  height: 30px;
+  bottom: 350px;
+  left: 90px;
+  --target-rot: 28deg;
+  animation-delay: 1.9s;
+}
+
+/* 3. FLOR DERECHA */
+.flower-right {
+  width: 200px;
+  height: 620px;
+  left: calc(50% + 15px);
+  z-index: 4;
+  animation: swayRight 5.8s ease-in-out 0.8s infinite alternate;
+}
+
+.flower-right .stem-svg {
+  width: 200px;
+  height: 620px;
+}
+
+.flower-right .head-right {
+  top: 95px;
+  left: 60px;
+  animation-delay: 1.5s;
+}
+
+.leaf-right-1 {
+  width: 70px;
+  height: 35px;
+  bottom: 260px;
+  left: 110px;
+  --target-rot: 44deg;
+  animation-delay: 1.7s;
+}
+
+.leaf-right-2 {
+  width: 60px;
+  height: 30px;
+  bottom: 370px;
+  left: 70px;
+  --target-rot: -30deg;
+  border-radius: 100% 0% 100% 10% / 100% 0% 100% 10%;
+  animation-delay: 2.1s;
+}
+
+/* 4. CAPULLO / FLOR MENOR IZQUIERDA */
+.flower-bud-left {
+  width: 160px;
+  height: 500px;
+  left: calc(50% - 255px);
+  z-index: 3;
+  animation: swayLeft 4.6s ease-in-out 0.2s infinite alternate;
+}
+
+.flower-bud-left .stem-svg {
+  width: 160px;
+  height: 500px;
+}
+
+.flower-bud-left .head-bud-left {
+  top: 190px;
+  left: -40px;
+  width: 110px;
+  height: 110px;
+  animation-delay: 1.8s;
+}
+
+.leaf-bud-1 {
+  width: 50px;
+  height: 24px;
+  bottom: 290px;
+  left: 70px;
+  --target-rot: -35deg;
+  border-radius: 100% 0% 100% 10% / 100% 0% 100% 10%;
+  animation-delay: 2.2s;
+}
+
+/* 5. CAPULLO / FLOR MENOR DERECHA */
+.flower-bud-right {
+  width: 160px;
+  height: 520px;
+  left: calc(50% + 95px);
+  z-index: 3;
+  animation: swayRight 5s ease-in-out 0.6s infinite alternate;
+}
+
+.flower-bud-right .stem-svg {
+  width: 160px;
+  height: 520px;
+}
+
+.flower-bud-right .head-bud-right {
+  top: 210px;
+  left: 65px;
+  width: 110px;
+  height: 110px;
+  animation-delay: 2s;
+}
+
+.leaf-bud-2 {
+  width: 52px;
+  height: 25px;
+  bottom: 300px;
+  left: 50px;
+  --target-rot: 35deg;
+  animation-delay: 2.3s;
+}
+
+/* ==========================================================
+   ANIMACIONES DE BALANCEO POR EL VIENTO (SWAY)
+   ========================================================== */
+@keyframes swayCenter {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(1.8deg); }
+  100% { transform: rotate(-1.5deg); }
+}
+
+@keyframes swayLeft {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(-3.5deg); }
+  100% { transform: rotate(0.8deg); }
+}
+
+@keyframes swayRight {
+  0% { transform: rotate(1.2deg); }
+  50% { transform: rotate(3.8deg); }
+  100% { transform: rotate(-0.5deg); }
+}
+
+/* ==========================================================
+   RESPONSIVE PARA TELÉFONOS CELULARES
+   ========================================================== */
+@media (max-width: 600px) {
+  .bouquet {
+    transform: scale(0.82);
+    transform-origin: bottom center;
+    max-height: 88vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .bouquet {
+    transform: scale(0.72);
+    transform-origin: bottom center;
+  }
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flores Amarillas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas de fondo para luciérnagas, polen y partículas mágicas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Escenario principal con las flores animadas -->
+  <div class="garden-container">
+    <!-- Resplandor cálido en la base -->
+    <div class="ground-glow"></div>
+
+    <!-- Ramo principal de flores amarillas -->
+    <div class="bouquet">
+      
+      <!-- Hierbas y tallos secundarios de fondo -->
+      <div class="grass-cluster">
+        <div class="grass grass-1"></div>
+        <div class="grass grass-2"></div>
+        <div class="grass grass-3"></div>
+        <div class="grass grass-4"></div>
+        <div class="grass grass-5"></div>
+      </div>
+
+      <!-- Flor 1: Izquierda (Inclinada suavemente) -->
+      <div class="flower-wrapper flower-left">
+        <svg class="stem-svg" viewBox="0 0 200 600">
+          <defs>
+            <linearGradient id="stem-grad-1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#1b4317"/>
+              <stop offset="60%" stop-color="#2d6a27"/>
+              <stop offset="100%" stop-color="#4e9944"/>
+            </linearGradient>
+            <linearGradient id="leaf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4e9944"/>
+              <stop offset="100%" stop-color="#1e4c19"/>
+            </linearGradient>
+          </defs>
+          <path class="stem-path" d="M 100 600 Q 110 380 60 160" stroke="url(#stem-grad-1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="leaf leaf-left-1"></div>
+        <div class="leaf leaf-left-2"></div>
+        
+        <!-- Cabeza de la flor izquierda -->
+        <div class="flower-head head-left">
+          <div class="petals-outer">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+          </div>
+          <div class="petals-inner">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+          </div>
+          <div class="flower-center">
+            <div class="center-texture"></div>
+            <div class="center-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flor 2: Centro (Principal, más alta y majestuosa) -->
+      <div class="flower-wrapper flower-center-main">
+        <svg class="stem-svg" viewBox="0 0 200 700">
+          <defs>
+            <linearGradient id="stem-grad-center" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#143611"/>
+              <stop offset="50%" stop-color="#2d6a27"/>
+              <stop offset="100%" stop-color="#55a54a"/>
+            </linearGradient>
+          </defs>
+          <path class="stem-path" d="M 100 700 Q 95 400 100 120" stroke="url(#stem-grad-center)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="leaf leaf-center-1"></div>
+        <div class="leaf leaf-center-2"></div>
+        <div class="leaf leaf-center-3"></div>
+
+        <!-- Cabeza de la flor central -->
+        <div class="flower-head head-center">
+          <div class="flower-aura"></div>
+          <div class="petals-outer">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span><span style="--i:16;"></span><span style="--i:17;"></span>
+            <span style="--i:18;"></span><span style="--i:19;"></span>
+          </div>
+          <div class="petals-middle">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+          </div>
+          <div class="petals-inner">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+          </div>
+          <div class="flower-center center-large">
+            <div class="center-texture"></div>
+            <div class="center-fluff"></div>
+            <div class="center-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flor 3: Derecha (Inclinada hacia la derecha) -->
+      <div class="flower-wrapper flower-right">
+        <svg class="stem-svg" viewBox="0 0 200 620">
+          <defs>
+            <linearGradient id="stem-grad-3" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#1b4317"/>
+              <stop offset="60%" stop-color="#2d6a27"/>
+              <stop offset="100%" stop-color="#4e9944"/>
+            </linearGradient>
+          </defs>
+          <path class="stem-path" d="M 100 620 Q 90 380 145 180" stroke="url(#stem-grad-3)" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="leaf leaf-right-1"></div>
+        <div class="leaf leaf-right-2"></div>
+
+        <!-- Cabeza de la flor derecha -->
+        <div class="flower-head head-right">
+          <div class="petals-outer">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+          </div>
+          <div class="petals-inner">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+          </div>
+          <div class="flower-center">
+            <div class="center-texture"></div>
+            <div class="center-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flor 4: Capullo / Flor secundaria izquierda (Más pequeña) -->
+      <div class="flower-wrapper flower-bud-left">
+        <svg class="stem-svg" viewBox="0 0 160 500">
+          <path class="stem-path-sub" d="M 120 500 Q 130 350 40 240" stroke="#2d6a27" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="leaf leaf-bud-1"></div>
+        <div class="flower-head head-bud-left">
+          <div class="petals-small">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span>
+          </div>
+          <div class="flower-center center-mini"></div>
+        </div>
+      </div>
+
+      <!-- Flor 5: Capullo / Flor secundaria derecha (Más pequeña) -->
+      <div class="flower-wrapper flower-bud-right">
+        <svg class="stem-svg" viewBox="0 0 160 520">
+          <path class="stem-path-sub" d="M 40 520 Q 30 360 120 260" stroke="#2d6a27" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="leaf leaf-bud-2"></div>
+        <div class="flower-head head-bud-right">
+          <div class="petals-small">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span>
+          </div>
+          <div class="flower-center center-mini"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
