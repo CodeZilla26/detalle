@@ -15,7 +15,7 @@
     <!-- Resplandor cálido en la base -->
     <div class="ground-glow"></div>
 
-    <!-- Ramo principal de flores amarillas -->
+    <!-- Ramo principal de 5 girasoles amarillos -->
     <div class="bouquet">
       
       <!-- Hierbas y tallos secundarios de fondo -->
@@ -27,26 +27,97 @@
         <div class="grass grass-5"></div>
       </div>
 
-      <!-- Flor 1: Izquierda (Inclinada suavemente) -->
+      <!-- 1. GIRASOL EXTREMO IZQUIERDO -->
+      <div class="flower-wrapper flower-far-left">
+        <svg class="stem-svg" viewBox="0 0 200 520">
+          <defs>
+            <linearGradient id="stem-grad-far-left" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#143611"/>
+              <stop offset="60%" stop-color="#286122"/>
+              <stop offset="100%" stop-color="#4e9944"/>
+            </linearGradient>
+            <linearGradient id="leaf-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#55a84b"/>
+              <stop offset="100%" stop-color="#1e4d1a"/>
+            </linearGradient>
+          </defs>
+          <path class="stem-path" d="M 140 520 Q 150 350 50 180" stroke="url(#stem-grad-far-left)" stroke-width="7" fill="none" stroke-linecap="round"/>
+          
+          <!-- Hoja inferior izquierda unida al tallo (x=144, y=380) -->
+          <g transform="translate(144, 380)">
+            <g class="leaf-inner leaf-anim-far-1" style="--rot-start: -25deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -25 -10 -55 -6 -72 -24 C -55 -42 -25 -36 0 0 Z" fill="url(#leaf-grad-1)"/>
+              <path class="leaf-vein" d="M 0 0 C -30 -14 -50 -18 -68 -22" stroke="#68bf5d" stroke-width="1.8" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja media derecha unida al tallo (x=115, y=270) -->
+          <g transform="translate(115, 270)">
+            <g class="leaf-inner leaf-anim-far-2" style="--rot-start: 25deg;">
+              <path class="leaf-shape-right" d="M 0 0 C 22 -8 50 -5 65 -20 C 50 -36 22 -32 0 0 Z" fill="url(#leaf-grad-1)"/>
+              <path class="leaf-vein" d="M 0 0 C 26 -12 45 -15 60 -19" stroke="#68bf5d" stroke-width="1.6" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Cabeza del girasol extremo izquierdo (completo con abundantes pétalos) -->
+        <div class="flower-head head-far-left">
+          <div class="petals-outer">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span>
+          </div>
+          <div class="petals-inner">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+          </div>
+          <div class="flower-center center-medium">
+            <div class="center-texture"></div>
+            <div class="center-fluff"></div>
+            <div class="center-core"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. GIRASOL IZQUIERDO -->
       <div class="flower-wrapper flower-left">
         <svg class="stem-svg" viewBox="0 0 200 600">
           <defs>
-            <linearGradient id="stem-grad-1" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#1b4317"/>
-              <stop offset="60%" stop-color="#2d6a27"/>
+            <linearGradient id="stem-grad-left" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#143611"/>
+              <stop offset="60%" stop-color="#2b6624"/>
               <stop offset="100%" stop-color="#4e9944"/>
             </linearGradient>
-            <linearGradient id="leaf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#4e9944"/>
-              <stop offset="100%" stop-color="#1e4c19"/>
+            <linearGradient id="leaf-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#55a84b"/>
+              <stop offset="100%" stop-color="#1c4818"/>
             </linearGradient>
           </defs>
-          <path class="stem-path" d="M 100 600 Q 110 380 60 160" stroke="url(#stem-grad-1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path class="stem-path" d="M 100 600 Q 110 380 60 160" stroke="url(#stem-grad-left)" stroke-width="8.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Hoja inferior izquierda unida al tallo (x=98, y=420) -->
+          <g transform="translate(98, 420)">
+            <g class="leaf-inner leaf-anim-left-1" style="--rot-start: -28deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -28 -12 -62 -8 -80 -28 C -62 -48 -28 -40 0 0 Z" fill="url(#leaf-grad-2)"/>
+              <path class="leaf-vein" d="M 0 0 C -35 -16 -58 -22 -75 -26" stroke="#68bf5d" stroke-width="1.8" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja superior derecha unida al tallo (x=84, y=280) -->
+          <g transform="translate(84, 280)">
+            <g class="leaf-inner leaf-anim-left-2" style="--rot-start: 28deg;">
+              <path class="leaf-shape-right" d="M 0 0 C 26 -10 58 -6 74 -24 C 58 -42 26 -35 0 0 Z" fill="url(#leaf-grad-2)"/>
+              <path class="leaf-vein" d="M 0 0 C 32 -14 54 -18 -70 -22" stroke="#68bf5d" stroke-width="1.7" fill="none" opacity="0.8"/>
+            </g>
+          </g>
         </svg>
-        <div class="leaf leaf-left-1"></div>
-        <div class="leaf leaf-left-2"></div>
-        
-        <!-- Cabeza de la flor izquierda -->
+
+        <!-- Cabeza del girasol izquierdo -->
         <div class="flower-head head-left">
           <div class="petals-outer">
             <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
@@ -64,28 +135,54 @@
           </div>
           <div class="flower-center">
             <div class="center-texture"></div>
+            <div class="center-fluff"></div>
             <div class="center-core"></div>
           </div>
         </div>
       </div>
 
-      <!-- Flor 2: Centro (Principal, más alta y majestuosa) -->
+      <!-- 3. GIRASOL CENTRAL (Principal, más alto y majestuoso) -->
       <div class="flower-wrapper flower-center-main">
         <svg class="stem-svg" viewBox="0 0 200 700">
           <defs>
             <linearGradient id="stem-grad-center" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#143611"/>
-              <stop offset="50%" stop-color="#2d6a27"/>
+              <stop offset="0%" stop-color="#112e0e"/>
+              <stop offset="50%" stop-color="#255e1f"/>
               <stop offset="100%" stop-color="#55a54a"/>
+            </linearGradient>
+            <linearGradient id="leaf-grad-center" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5bb550"/>
+              <stop offset="100%" stop-color="#184114"/>
             </linearGradient>
           </defs>
           <path class="stem-path" d="M 100 700 Q 95 400 100 120" stroke="url(#stem-grad-center)" stroke-width="10" fill="none" stroke-linecap="round"/>
-        </svg>
-        <div class="leaf leaf-center-1"></div>
-        <div class="leaf leaf-center-2"></div>
-        <div class="leaf leaf-center-3"></div>
 
-        <!-- Cabeza de la flor central -->
+          <!-- Hoja inferior izquierda unida al tallo (x=96, y=470) -->
+          <g transform="translate(96, 470)">
+            <g class="leaf-inner leaf-anim-center-1" style="--rot-start: -30deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -30 -14 -68 -10 -88 -32 C -68 -54 -30 -45 0 0 Z" fill="url(#leaf-grad-center)"/>
+              <path class="leaf-vein" d="M 0 0 C -38 -18 -64 -25 -82 -30" stroke="#68bf5d" stroke-width="2" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja media derecha unida al tallo (x=98, y=350) -->
+          <g transform="translate(98, 350)">
+            <g class="leaf-inner leaf-anim-center-2" style="--rot-start: 30deg;">
+              <path class="leaf-shape-right" d="M 0 0 C 30 -14 68 -10 88 -32 C 68 -54 30 -45 0 0 Z" fill="url(#leaf-grad-center)"/>
+              <path class="leaf-vein" d="M 0 0 C 38 -18 64 -25 82 -30" stroke="#68bf5d" stroke-width="2" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja superior izquierda unida al tallo (x=99, y=240) -->
+          <g transform="translate(99, 240)">
+            <g class="leaf-inner leaf-anim-center-3" style="--rot-start: -25deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -25 -12 -58 -8 -74 -26 C -58 -44 -25 -37 0 0 Z" fill="url(#leaf-grad-center)"/>
+              <path class="leaf-vein" d="M 0 0 C -32 -15 -54 -20 -70 -24" stroke="#68bf5d" stroke-width="1.8" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Cabeza del girasol central -->
         <div class="flower-head head-center">
           <div class="flower-aura"></div>
           <div class="petals-outer">
@@ -119,22 +216,40 @@
         </div>
       </div>
 
-      <!-- Flor 3: Derecha (Inclinada hacia la derecha) -->
+      <!-- 4. GIRASOL DERECHO -->
       <div class="flower-wrapper flower-right">
         <svg class="stem-svg" viewBox="0 0 200 620">
           <defs>
-            <linearGradient id="stem-grad-3" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#1b4317"/>
-              <stop offset="60%" stop-color="#2d6a27"/>
+            <linearGradient id="stem-grad-right" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#143611"/>
+              <stop offset="60%" stop-color="#2b6624"/>
               <stop offset="100%" stop-color="#4e9944"/>
             </linearGradient>
+            <linearGradient id="leaf-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#55a84b"/>
+              <stop offset="100%" stop-color="#1c4818"/>
+            </linearGradient>
           </defs>
-          <path class="stem-path" d="M 100 620 Q 90 380 145 180" stroke="url(#stem-grad-3)" stroke-width="8" fill="none" stroke-linecap="round"/>
-        </svg>
-        <div class="leaf leaf-right-1"></div>
-        <div class="leaf leaf-right-2"></div>
+          <path class="stem-path" d="M 100 620 Q 90 380 145 180" stroke="url(#stem-grad-right)" stroke-width="8.5" fill="none" stroke-linecap="round"/>
 
-        <!-- Cabeza de la flor derecha -->
+          <!-- Hoja inferior derecha unida al tallo (x=103, y=430) -->
+          <g transform="translate(103, 430)">
+            <g class="leaf-inner leaf-anim-right-1" style="--rot-start: 28deg;">
+              <path class="leaf-shape-right" d="M 0 0 C 28 -12 62 -8 80 -28 C 62 -48 28 -40 0 0 Z" fill="url(#leaf-grad-3)"/>
+              <path class="leaf-vein" d="M 0 0 C 35 -16 58 -22 75 -26" stroke="#68bf5d" stroke-width="1.8" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja superior izquierda unida al tallo (x=118, y=290) -->
+          <g transform="translate(118, 290)">
+            <g class="leaf-inner leaf-anim-right-2" style="--rot-start: -28deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -26 -10 -58 -6 -74 -24 C -58 -42 -26 -35 0 0 Z" fill="url(#leaf-grad-3)"/>
+              <path class="leaf-vein" d="M 0 0 C -32 -14 -54 -18 -70 -22" stroke="#68bf5d" stroke-width="1.7" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Cabeza del girasol derecho -->
         <div class="flower-head head-right">
           <div class="petals-outer">
             <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
@@ -152,40 +267,66 @@
           </div>
           <div class="flower-center">
             <div class="center-texture"></div>
+            <div class="center-fluff"></div>
             <div class="center-core"></div>
           </div>
         </div>
       </div>
 
-      <!-- Flor 4: Capullo / Flor secundaria izquierda (Más pequeña) -->
-      <div class="flower-wrapper flower-bud-left">
-        <svg class="stem-svg" viewBox="0 0 160 500">
-          <path class="stem-path-sub" d="M 120 500 Q 130 350 40 240" stroke="#2d6a27" stroke-width="5" fill="none" stroke-linecap="round"/>
-        </svg>
-        <div class="leaf leaf-bud-1"></div>
-        <div class="flower-head head-bud-left">
-          <div class="petals-small">
-            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
-            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
-            <span style="--i:6;"></span><span style="--i:7;"></span>
-          </div>
-          <div class="flower-center center-mini"></div>
-        </div>
-      </div>
+      <!-- 5. GIRASOL EXTREMO DERECHO -->
+      <div class="flower-wrapper flower-far-right">
+        <svg class="stem-svg" viewBox="0 0 200 540">
+          <defs>
+            <linearGradient id="stem-grad-far-right" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#143611"/>
+              <stop offset="60%" stop-color="#286122"/>
+              <stop offset="100%" stop-color="#4e9944"/>
+            </linearGradient>
+            <linearGradient id="leaf-grad-5" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#55a84b"/>
+              <stop offset="100%" stop-color="#1e4d1a"/>
+            </linearGradient>
+          </defs>
+          <path class="stem-path" d="M 60 540 Q 50 360 150 190" stroke="url(#stem-grad-far-right)" stroke-width="7" fill="none" stroke-linecap="round"/>
 
-      <!-- Flor 5: Capullo / Flor secundaria derecha (Más pequeña) -->
-      <div class="flower-wrapper flower-bud-right">
-        <svg class="stem-svg" viewBox="0 0 160 520">
-          <path class="stem-path-sub" d="M 40 520 Q 30 360 120 260" stroke="#2d6a27" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- Hoja inferior derecha unida al tallo (x=57, y=390) -->
+          <g transform="translate(57, 390)">
+            <g class="leaf-inner leaf-anim-far-3" style="--rot-start: 25deg;">
+              <path class="leaf-shape-right" d="M 0 0 C 25 -10 55 -6 72 -24 C 55 -42 25 -36 0 0 Z" fill="url(#leaf-grad-5)"/>
+              <path class="leaf-vein" d="M 0 0 C 30 -14 50 -18 68 -22" stroke="#68bf5d" stroke-width="1.8" fill="none" opacity="0.8"/>
+            </g>
+          </g>
+
+          <!-- Hoja media izquierda unida al tallo (x=85, y=280) -->
+          <g transform="translate(85, 280)">
+            <g class="leaf-inner leaf-anim-far-4" style="--rot-start: -25deg;">
+              <path class="leaf-shape-left" d="M 0 0 C -22 -8 -50 -5 -65 -20 C -50 -36 -22 -32 0 0 Z" fill="url(#leaf-grad-5)"/>
+              <path class="leaf-vein" d="M 0 0 C -26 -12 -45 -15 -60 -19" stroke="#68bf5d" stroke-width="1.6" fill="none" opacity="0.8"/>
+            </g>
+          </g>
         </svg>
-        <div class="leaf leaf-bud-2"></div>
-        <div class="flower-head head-bud-right">
-          <div class="petals-small">
+
+        <!-- Cabeza del girasol extremo derecho (completo con abundantes pétalos) -->
+        <div class="flower-head head-far-right">
+          <div class="petals-outer">
             <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
             <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
-            <span style="--i:6;"></span><span style="--i:7;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+            <span style="--i:12;"></span><span style="--i:13;"></span><span style="--i:14;"></span>
+            <span style="--i:15;"></span>
           </div>
-          <div class="flower-center center-mini"></div>
+          <div class="petals-inner">
+            <span style="--i:0;"></span><span style="--i:1;"></span><span style="--i:2;"></span>
+            <span style="--i:3;"></span><span style="--i:4;"></span><span style="--i:5;"></span>
+            <span style="--i:6;"></span><span style="--i:7;"></span><span style="--i:8;"></span>
+            <span style="--i:9;"></span><span style="--i:10;"></span><span style="--i:11;"></span>
+          </div>
+          <div class="flower-center center-medium">
+            <div class="center-texture"></div>
+            <div class="center-fluff"></div>
+            <div class="center-core"></div>
+          </div>
         </div>
       </div>
 
